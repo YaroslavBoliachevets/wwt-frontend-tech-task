@@ -1,8 +1,9 @@
-import { FilterBase } from '@/shared/api/types/Filter'
+import { FilterItem } from '@/shared/api/types/Filter'
 
 import FilterSection from './filterSection'
 
-const FilterList = ({ list }: { list: FilterBase[] }) => {
+const FilterList = ({ list }: { list: FilterItem[] }) => {
+	console.log('list', list)
 	return (
 		<>
 			{list.map(filter => {
