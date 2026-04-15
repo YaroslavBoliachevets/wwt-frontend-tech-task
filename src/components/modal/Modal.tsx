@@ -1,5 +1,3 @@
-// import Button from '../button/Button'
-
 type ModalProps = {
 	modal: boolean
 	setModal: (value: boolean) => void
