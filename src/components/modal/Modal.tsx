@@ -11,7 +11,7 @@ const Modal = ({ modal, setModal, children }: ModalProps) => {
 		return null
 	}
 
-	console.log(children)
+	// console.log(children)
 
 	const handleBackdropClick = () => {
 		setModal(false)
