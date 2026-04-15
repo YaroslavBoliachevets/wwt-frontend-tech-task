@@ -15,3 +15,5 @@ i18n.use(initReactI18next).init({
 	},
 	defaultNS: I18N_DEFAULT_NS
 })
+
+export default i18n

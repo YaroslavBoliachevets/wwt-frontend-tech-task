@@ -1,3 +1,6 @@
 {
-	"open_modal": "Open modal"
+	"open_modal": "Open modal",
+	"ask_confirm": "Do you want to apply new filters?",
+	"cancell_btn": "Use old filter",
+	"apply_btn": "Apply new filter"
 }
