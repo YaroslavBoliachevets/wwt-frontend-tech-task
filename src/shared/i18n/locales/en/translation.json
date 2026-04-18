@@ -1,6 +1,9 @@
 {
 	"open_modal": "Open modal",
+	"close_modal": "Close",
 	"ask_confirm": "Do you want to apply new filters?",
 	"cancell_btn": "Use old filter",
-	"apply_btn": "Apply new filter"
+	"apply_btn": "Apply new filter",
+	"modal_title": "Filter",
+	"lorem": "Lorem ipsum dolor sit amet, consectetur adipisicing elit"
 }

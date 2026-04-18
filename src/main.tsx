@@ -10,7 +10,6 @@ import { App } from './pages/Home'
 import { queryClient } from './query'
 
 // import './shared/i18n'
-console.log(i18n, 'проверкаааа')
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
 		<I18nextProvider i18n={i18n}>
