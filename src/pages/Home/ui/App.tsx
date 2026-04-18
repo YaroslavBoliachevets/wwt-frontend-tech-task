@@ -1,13 +1,14 @@
 // import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+// import FilterList from '@components/filter/filterList'
+// // import Modal from '@components/modal/Modal'
+// import Modal from '@components/modal/ModalManager'
+import ModalRoot from '@shared/store/ModalRoot'
 import { useModalStore } from '@shared/store/useModal'
 
 // import { useQuery } from '@tanstack/react-query'
 import Button from '@components/button/Button'
-// import FilterList from '@components/filter/filterList'
-// // import Modal from '@components/modal/Modal'
-import Modal from '@components/modal/ModalManager'
 
 export const App = () => {
 	const { t } = useTranslation()
@@ -27,12 +28,7 @@ export const App = () => {
 				WinWinTravel frontend test task
 			</h1>
 			<Button onClick={() => open('filters', {})}>{t('open_modal')}</Button>
-			<Modal
-			// modal={modal}
-			// setModal={setModal}
-			>
-				{/* <FilterList list={data?.filterItems} /> */}
-			</Modal>
+			<ModalRoot />
 		</section>
 	)
 }

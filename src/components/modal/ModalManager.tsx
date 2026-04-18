@@ -1,10 +1,14 @@
-import { useEffect } from 'react'
+import { ReactNode, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { useTranslation } from 'react-i18next'
 
 import { useModalStore } from '@shared/store/useModal'
 
-const Modal = () => {
+interface ModalProps {
+	children: ReactNode
+}
+
+const Modal = ({ children }: ModalProps) => {
 	const { type, close } = useModalStore()
 	const { t } = useTranslation()
 
@@ -33,8 +37,8 @@ const Modal = () => {
 			>
 				<h2 className="text-xl font-semibold mb-4">{t('modal_title')}</h2>
 
-				<p className="mb-4">{t('lorem')}</p>
-
+				{/* <p className="mb-4">{t('lorem')}</p> */}
+				{children}
 				<button
 					className="px-4 py-2 bg-blue-500 text-white rounded"
 					onClick={close}
