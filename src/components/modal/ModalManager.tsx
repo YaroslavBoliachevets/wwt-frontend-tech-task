@@ -6,11 +6,14 @@ import { useModalStore } from '@shared/store/useModal'
 
 interface ModalProps {
 	children: ReactNode
+	key: number
+	zIndex: number
 }
 
 const Modal = ({ children }: ModalProps) => {
-	const { modal, close } = useModalStore()
-	const { type } = modal
+	const { stack, close } = useModalStore()
+	// const { type } = modal
+	const top = stack[stack.length - 1]
 	const { t } = useTranslation()
 
 	useEffect(() => {
@@ -23,7 +26,7 @@ const Modal = ({ children }: ModalProps) => {
 		return () => window.removeEventListener('keydown', handler)
 	}, [close])
 
-	if (!type) {
+	if (!top) {
 		return null
 	}
 

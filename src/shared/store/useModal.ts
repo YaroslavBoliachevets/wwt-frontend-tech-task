@@ -1,9 +1,6 @@
 import { FilterItem } from '@shared/api/types/Filter'
 import { create } from 'zustand'
 
-// type ModalProps = Record<string, unknown>
-// type ModalType = 'confirm' | 'filters' | null
-
 type ModalState =
 	| {
 			type: null
@@ -15,28 +12,19 @@ type ModalState =
 			props: { message: string; onConfirm: () => void }
 	  }
 
-// interface ModalPropsMap {
-// 	filters: {
-// 		list: FilterItem[]
-// 	}
-// 	confirm: {}
-// }
 interface ModalStore {
-	modal: ModalState
+	stack: ModalState[]
 	open: (state: Exclude<ModalState, { type: null }>) => void
 	close: () => void
 }
-// interface ModalState {
-// 	type: ModalType
-// open: (type: ModalType, props: Record<string, unknown>) => void
-// close: () => void
-// 	props: ModalPropsMap[ModalType] | {}
-// }
 
 export const useModalStore = create<ModalStore>(set => ({
-	modal: { type: null, props: {} as Record<string, never> },
+	// modal: { type: null, props: {} as Record<string, never> },
+	stack: [],
 	// props: {},
-	open: state => set({ modal: state }),
-	close: () =>
-		set({ modal: { type: null, props: {} as Record<string, never> } })
+	// open: state => set({ modal: state }),
+	open: modal => set(state => ({ stack: [...state.stack, modal] })),
+	// close: () =>
+	// 	set({ modal: { type: null, props: {} as Record<string, never> } })
+	close: () => set(state => ({ stack: state.stack.slice(0, -1) }))
 }))

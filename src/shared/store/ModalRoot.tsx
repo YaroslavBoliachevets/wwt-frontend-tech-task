@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import Modal from '@components/modal/ModalManager'
 import ConfirmScreen from '@components/modal/screens/ConfirmScreen'
 import FilterScreen from '@components/modal/screens/FilterScreen'
@@ -6,24 +5,28 @@ import FilterScreen from '@components/modal/screens/FilterScreen'
 import { useModalStore } from './useModal'
 
 const ModalRoot = () => {
-	const { modal } = useModalStore()
-	const { type, props } = modal
+	const { stack } = useModalStore()
 
-	if (!type) {
+	if (stack.length === 0) {
 		return null
 	}
 
 	return (
 		<>
-			<Modal>
-				{type === 'filters' && <FilterScreen list={props.list} />}
-				{type === 'confirm' && (
-					<ConfirmScreen
-						message={props.message}
-						onConfirm={props.onConfirm}
-					/>
-				)}
-			</Modal>
+			{stack.map((modal, index) => (
+				<Modal
+					key={index}
+					zIndex={50 + index}
+				>
+					{modal.type === 'filters' && <FilterScreen list={modal.props.list} />}
+					{modal.type === 'confirm' && (
+						<ConfirmScreen
+							message={modal.props.message}
+							onConfirm={modal.props.onConfirm}
+						/>
+					)}
+				</Modal>
+			))}
 		</>
 	)
 }
