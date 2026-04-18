@@ -1,10 +1,15 @@
-import { useTranslation } from 'react-i18next'
+import { FilterItem } from '@shared/api/types/Filter'
 
-const FilterScreen = ({ onClose }: { onClose: () => void }) => {
-	const { t } = useTranslation()
+import FilterList from '@components/filter/filterList'
+
+interface FilterScreenProps {
+	list: FilterItem[]
+}
+
+const FilterScreen = ({ list }: FilterScreenProps) => {
 	return (
 		<div>
-			<button onClick={onClose}>{t('close_modal')}</button>
+			<FilterList list={list} />
 		</div>
 	)
 }

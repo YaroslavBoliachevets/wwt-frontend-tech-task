@@ -10,7 +10,7 @@ import Modal from '@components/modal/Modal'
 import FilterSection from './filterSection'
 
 const FilterList = ({ list }: { list: FilterItem[] }) => {
-	console.log('list', list)
+	// console.log('list', list)
 	const { t } = useTranslation()
 	const [modal, setModal] = useState(false)
 

@@ -6,8 +6,8 @@ import { useTranslation } from 'react-i18next'
 // import Modal from '@components/modal/ModalManager'
 import ModalRoot from '@shared/store/ModalRoot'
 import { useModalStore } from '@shared/store/useModal'
+import { useQuery } from '@tanstack/react-query'
 
-// import { useQuery } from '@tanstack/react-query'
 import Button from '@components/button/Button'
 
 export const App = () => {
@@ -16,10 +16,10 @@ export const App = () => {
 
 	const open = useModalStore(state => state.open)
 
-	// const { data } = useQuery({
-	// 	queryKey: ['filters'],
-	// 	queryFn: () => fetch('/filterData.json').then(res => res.json())
-	// })
+	const { data } = useQuery({
+		queryKey: ['filters'],
+		queryFn: () => fetch('/filterData.json').then(res => res.json())
+	})
 
 	return (
 		<section className="w-full h-dvh flex flex-col items-center justify-center">
@@ -27,7 +27,13 @@ export const App = () => {
 			<h1 className="text-6xl text-gray-600 mb-12">
 				WinWinTravel frontend test task
 			</h1>
-			<Button onClick={() => open('filters', {})}>{t('open_modal')}</Button>
+			<Button
+				onClick={() =>
+					open({ type: 'filters', props: { list: data?.filterItems } })
+				}
+			>
+				{t('open_modal')}
+			</Button>
 			<ModalRoot />
 		</section>
 	)
