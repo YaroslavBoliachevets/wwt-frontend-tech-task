@@ -2,17 +2,19 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { useFilterStore } from '@shared/store/useFilterStore'
+import { useModalStore } from '@shared/store/useModal'
 
 import { FilterItem } from '@/shared/api/types/Filter'
-import Button from '@components/button/Button'
-import Modal from '@components/modal/Modal'
 
+// import Button from '@components/button/Button'
+// import Modal from '@components/modal/Modal'
 import FilterSection from './filterSection'
 
 const FilterList = ({ list }: { list: FilterItem[] }) => {
+	const { open, close } = useModalStore()
 	// console.log('list', list)
 	const { t } = useTranslation()
-	const [modal, setModal] = useState(false)
+	// const [modal, setModal] = useState(false)
 
 	const globalFilters = useFilterStore(state => state.filters)
 	const setFilters = useFilterStore(state => state.setFilters)
@@ -24,7 +26,8 @@ const FilterList = ({ list }: { list: FilterItem[] }) => {
 
 	const handleGlobalFiltersConfirm = () => {
 		setFilters(localFilters)
-		setModal(false)
+		close()
+		// setModal(false)
 	}
 	return (
 		<>
@@ -41,15 +44,29 @@ const FilterList = ({ list }: { list: FilterItem[] }) => {
 				)
 			})}
 
-			<Button onClick={() => setModal(true)}>{t('apply_btn')}</Button>
-			<Modal
+			{/* <Button onClick={() => setModal(true)}>{t('apply_btn')}</Button> */}
+			{/* <Modal
 				modal={modal}
 				setModal={setModal}
 			>
 				<span>{t('ask_confirm')}</span>
 				<Button onClick={() => setModal(false)}>{t('cancell_btn')}</Button>
 				<Button onClick={handleGlobalFiltersConfirm}>{t('apply_btn')}</Button>
-			</Modal>
+			</Modal> */}
+
+			<button
+				onClick={() =>
+					open({
+						type: 'confirm',
+						props: {
+							message: 'Apply new filters?',
+							onConfirm: handleGlobalFiltersConfirm
+						}
+					})
+				}
+			>
+				{t('open_modal')}
+			</button>
 		</>
 	)
 }

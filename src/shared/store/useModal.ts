@@ -12,7 +12,7 @@ type ModalState =
 	| { type: 'filters'; props: { list: FilterItem[] } }
 	| {
 			type: 'confirm'
-			props: Record<string, never>
+			props: { message: string; onConfirm: () => void }
 	  }
 
 // interface ModalPropsMap {
