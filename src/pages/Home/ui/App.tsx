@@ -19,7 +19,7 @@ export const App = () => {
 
 	const { data } = useQuery({
 		queryKey: ['filters'],
-		queryFn: () => fetch('/filterData.json').then(res => res.json())
+		queryFn: () => fetch('./filterData.json').then(res => res.json())
 	})
 
 	return (
