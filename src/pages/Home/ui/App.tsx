@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 // // import Modal from '@components/modal/Modal'
 // import Modal from '@components/modal/ModalManager'
 import ModalRoot from '@shared/store/ModalRoot'
+import { useFilterStore } from '@shared/store/useFilterStore'
 import { useModalStore } from '@shared/store/useModal'
 import { useQuery } from '@tanstack/react-query'
 
@@ -12,7 +13,7 @@ import Button from '@components/button/Button'
 
 export const App = () => {
 	const { t } = useTranslation()
-	// const [modal, setModal] = useState(false)
+	const filters = useFilterStore(state => state.filters)
 
 	const open = useModalStore(state => state.open)
 
@@ -35,6 +36,13 @@ export const App = () => {
 				{t('open_modal')}
 			</Button>
 			<ModalRoot />
+			<div>
+				<h2 className="text-xl font-bold mt-6">{t('current_filters')}</h2>
+
+				<pre className="bg-gray-100 p-4 rounded mt-2">
+					{JSON.stringify(filters, null, 2)}
+				</pre>
+			</div>
 		</section>
 	)
 }

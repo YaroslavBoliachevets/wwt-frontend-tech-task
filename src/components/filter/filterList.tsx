@@ -11,9 +11,7 @@ import FilterSection from './filterSection'
 
 const FilterList = ({ list }: { list: FilterItem[] }) => {
 	const { open, close } = useModalStore()
-	// console.log('list', list)
 	const { t } = useTranslation()
-	// const [modal, setModal] = useState(false)
 
 	const globalFilters = useFilterStore(state => state.filters)
 	const setFilters = useFilterStore(state => state.setFilters)
@@ -27,7 +25,6 @@ const FilterList = ({ list }: { list: FilterItem[] }) => {
 	const handleGlobalFiltersConfirm = () => {
 		setFilters(localFilters)
 		close()
-		// setModal(false)
 	}
 
 	const handleResetFilters = () => {
@@ -53,8 +50,6 @@ const FilterList = ({ list }: { list: FilterItem[] }) => {
 					)
 				})}
 			</div>
-
-			{/* <Button onClick={() => setModal(true)}>{t('apply_btn')}</Button> */}
 			<div
 				className="grid 
 				grid-cols-3

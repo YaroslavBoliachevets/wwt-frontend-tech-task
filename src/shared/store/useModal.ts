@@ -19,12 +19,7 @@ interface ModalStore {
 }
 
 export const useModalStore = create<ModalStore>(set => ({
-	// modal: { type: null, props: {} as Record<string, never> },
 	stack: [],
-	// props: {},
-	// open: state => set({ modal: state }),
 	open: modal => set(state => ({ stack: [...state.stack, modal] })),
-	// close: () =>
-	// 	set({ modal: { type: null, props: {} as Record<string, never> } })
 	close: () => set(state => ({ stack: state.stack.slice(0, -1) }))
 }))

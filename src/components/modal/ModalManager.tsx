@@ -12,7 +12,6 @@ interface ModalProps {
 
 const Modal = ({ children }: ModalProps) => {
 	const { stack, close } = useModalStore()
-	// const { type } = modal
 	const top = stack[stack.length - 1]
 	const { t } = useTranslation()
 
