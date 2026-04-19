@@ -59,7 +59,7 @@ const FilterList = ({ list }: { list: FilterItem[] }) => {
 					open({
 						type: 'confirm',
 						props: {
-							message: 'Apply new filters?',
+							message: t('ask_confirm'),
 							onConfirm: handleGlobalFiltersConfirm
 						}
 					})

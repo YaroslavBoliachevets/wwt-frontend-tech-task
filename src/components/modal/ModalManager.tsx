@@ -36,19 +36,19 @@ const Modal = ({ children }: ModalProps) => {
 			onClick={close} // клик по фону
 		>
 			<div
-				className="bg-white p-6 rounded shadow-xl"
+				className="bg-white w-7xl relative rounded-2xl shadow-xl"
 				onClick={e => e.stopPropagation()}
 			>
-				<h2 className="text-xl font-semibold mb-4">{t('modal_title')}</h2>
+				<button
+					className="px-4 py-2 rounded cursor-pointer absolute left-310"
+					onClick={close}
+				>
+					{t('x')}
+				</button>
+				{/* <h2 className="text-xl font-semibold mb-4">{t('modal_title')}</h2> */}
 
 				{/* <p className="mb-4">{t('lorem')}</p> */}
 				{children}
-				{/* <button
-					className="px-4 py-2 bg-blue-500 text-white rounded"
-					onClick={close}
-				>
-					{t('close')}
-				</button> */}
 			</div>
 		</div>,
 		document.body
