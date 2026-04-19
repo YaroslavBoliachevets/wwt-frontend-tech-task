@@ -16,33 +16,38 @@ const OptionsList = ({ options, selected, onSelect }: OptionsListProps) => {
 		}
 	}
 	return (
-		<div className="flex flex-col gap-3">
+		<ul className="grid grid-cols-3 gap-4">
 			{options &&
 				options.map(option => (
-					<label
+					<li
 						key={option.id}
-						className="flex items-start gap-3 cursor-pointer group"
+						className="block break-inside-avoid"
 					>
-						<input
-							type="checkbox"
-							className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-							onChange={() => changeSelect(option.id)}
-							checked={selected.includes(option.id)}
-						/>
+						<label
+							key={option.id}
+							className="flex items-start gap-3 cursor-pointer group"
+						>
+							<input
+								type="checkbox"
+								className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+								onChange={() => changeSelect(option.id)}
+								checked={selected.includes(option.id)}
+							/>
 
-						<div className="flex flex-col">
-							<span className="text-sm font-medium text-gray-800 group-hover:text-blue-600 transition">
-								{option.name}
-							</span>
-							{option.description && (
-								<span className="text-xs text-gray-500 leading-snug">
-									{option.description}
+							<div className="flex flex-col">
+								<span className="text-sm font-medium text-gray-800 group-hover:text-blue-600 transition">
+									{option.name}
 								</span>
-							)}
-						</div>
-					</label>
+								{option.description && (
+									<span className="text-xs text-gray-500 leading-snug">
+										{option.description}
+									</span>
+								)}
+							</div>
+						</label>
+					</li>
 				))}
-		</div>
+		</ul>
 	)
 }
 

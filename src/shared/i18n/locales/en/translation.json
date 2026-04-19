@@ -6,5 +6,8 @@
 	"apply_btn": "Apply new filter",
 	"modal_title": "Filter",
 	"lorem": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
-	"x": "x"
+	"x": "x",
+	"filter": "Filter",
+	"apply": "Apply",
+	"clear_all": "Clear all parameters"
 }

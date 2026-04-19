@@ -7,11 +7,7 @@ interface FilterScreenProps {
 }
 
 const FilterScreen = ({ list }: FilterScreenProps) => {
-	return (
-		<div>
-			<FilterList list={list} />
-		</div>
-	)
+	return <FilterList list={list} />
 }
 
 export default FilterScreen

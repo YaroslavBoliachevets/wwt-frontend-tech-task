@@ -32,11 +32,11 @@ const Modal = ({ children }: ModalProps) => {
 
 	return createPortal(
 		<div
-			className="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
+			className="fixed inset-0 bg-black/40 overflow-y-auto z-50"
 			onClick={close} // клик по фону
 		>
 			<div
-				className="bg-white w-7xl relative rounded-2xl shadow-xl"
+				className="bg-white w-7xl   h-max flex flex-col relative rounded-2xl shadow-xl overflow-hidden m-auto mt-20 mb-20"
 				onClick={e => e.stopPropagation()}
 			>
 				<button
@@ -45,9 +45,7 @@ const Modal = ({ children }: ModalProps) => {
 				>
 					{t('x')}
 				</button>
-				{/* <h2 className="text-xl font-semibold mb-4">{t('modal_title')}</h2> */}
 
-				{/* <p className="mb-4">{t('lorem')}</p> */}
 				{children}
 			</div>
 		</div>,
