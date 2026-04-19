@@ -79,7 +79,15 @@ const FilterList = ({ list }: { list: FilterItem[] }) => {
 				</Button>
 				<button
 					className=" cursor-pointer underline text-teal-600 font-medium justify-self-end hover:text-teal-700"
-					onClick={handleResetFilters}
+					onClick={() =>
+						open({
+							type: 'confirm',
+							props: {
+								message: t('ask_confirm_clear_all'),
+								onConfirm: handleResetFilters
+							}
+						})
+					}
 				>
 					{t('clear_all')}
 				</button>

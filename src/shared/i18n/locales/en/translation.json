@@ -9,5 +9,6 @@
 	"x": "x",
 	"filter": "Filter",
 	"apply": "Apply",
-	"clear_all": "Clear all parameters"
+	"clear_all": "Clear all parameters",
+	"ask_confirm_clear_all": "Do you want to clear all filters?"
 }
